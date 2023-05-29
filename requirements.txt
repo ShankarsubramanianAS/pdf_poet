@@ -8,5 +8,4 @@ streamlit-chat==0.0.2.2
 reportlab==4.0.0
 pycairo==1.23.0
 pillow==9.5.0
-sudo apt-get install build-essential libcairo2-dev pkg-config python3-dev
 
