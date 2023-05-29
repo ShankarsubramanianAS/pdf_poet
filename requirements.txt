@@ -7,4 +7,4 @@ faiss-cpu==1.7.4
 streamlit-chat==0.0.2.2
 reportlab==4.0.0
 pillow==9.5.0
-pip3 install --force-reinstall --no-cache-dir pycairo
+#pip3 install --force-reinstall --no-cache-dir pycairo
