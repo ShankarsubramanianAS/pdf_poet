@@ -32,7 +32,7 @@ def initialize_session_state():
 
 def process_pdfs(pdfs):
     """Extract text from PDFs and create a knowledge base."""
-    with st.spinner('Processing PDFs...'):
+    with st.spinner('Feeding PDFs...'):
         text = ''
         for pdf in pdfs:
             pdf_reader = PdfReader(pdf)
@@ -60,7 +60,7 @@ def answer_question(question):
     st.session_state.messages.append({'message': question, 'is_user': True})  # Add user question to the message list
     st.session_state.all_messages.append({'message': question, 'is_user': True})  # Add user question to the all_messages list
 
-    with st.spinner('Thinking...'):
+    with st.spinner('Let me think...'):
         docs = st.session_state.knowledge_base.similarity_search(question)
 
         llm = OpenAI()
@@ -143,7 +143,7 @@ def display_chat():
 def main():
     initialize_session_state()
 
-    st.header('PDF Insights')
+    st.header('PDF POET')
     openai_key = st.text_input('Enter your OpenAI API key:', type='password', key='openai_key')
 
     if openai_key:
