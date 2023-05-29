@@ -143,7 +143,8 @@ def display_chat():
 def main():
     initialize_session_state()
 
-    st.header('PDF POET')
+    image_file ="https://github.com/ShankarsubramanianAS/pdf_poet/raw/main/header/robot_reader.jpg"
+    st.image(image_file,use_column_width=True, output_format="JPG")
     openai_key = st.text_input('Enter your OpenAI API key:', type='password', key='openai_key')
 
     if openai_key:
