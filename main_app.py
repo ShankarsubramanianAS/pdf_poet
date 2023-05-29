@@ -17,7 +17,8 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.units import inch
 from reportlab.platypus.flowables import Image
-from PIL import Image as PilImage
+#from PIL import Image as PilImage
+import imageio
 
 def initialize_session_state():
     """Initialize Streamlit session state variables."""
@@ -71,6 +72,8 @@ def answer_question(question):
 
     st.session_state.messages.append({'message': response, 'is_user': False})  # Add bot response to the message list
     st.session_state.all_messages.append({'message': response, 'is_user': False})  # Add bot response to the all_messages list
+import imageio
+from reportlab.lib.units import inch
 
 def on_page(canvas, doc):
     # This function will be called for each page during the PDF creation process.
@@ -78,24 +81,48 @@ def on_page(canvas, doc):
     # and a `doc` object that contains information about the document.
     
     # Add your image file
-    img_path = './header/robot_reader.jpg'
-    # Load your image file with PIL
-    pil_image = PilImage.open(img_path)
-
+    img_path = './header/robot_reader.jpeg'
+    
+    # Read the image using imageio
+    image = imageio.imread(img_path)
+    
     # Get the original width and height of the image
-    orig_width, orig_height = pil_image.size
-
+    orig_height, orig_width, _ = image.shape
+    
     # Define the width you want for the image in the PDF
     img_width = 1.0 * inch
-
+    
     # Calculate the height based on the original image's aspect ratio
     img_height = img_width * orig_height / orig_width
-
-    img = Image(img_path, width=img_width, height=img_height)
     
     # Draw image at the top of the page
     x_position = 1.09 * inch  # adjust as necessary
-    img.drawOn(canvas, x_position, doc.height + 1 * inch)  # adjust second and third parameter as necessary
+    canvas.drawInlineImage(image, x_position, doc.height + 1 * inch, width=img_width, height=img_height)  # adjust parameters as necessary
+
+# def on_page(canvas, doc):
+#     # This function will be called for each page during the PDF creation process.
+#     # It receives a `canvas` object that can be used to draw on the page,
+#     # and a `doc` object that contains information about the document.
+    
+#     # Add your image file
+#     img_path = './header/robot_reader.jpg'
+#     # Load your image file with PIL
+#     pil_image = PilImage.open(img_path)
+
+#     # Get the original width and height of the image
+#     orig_width, orig_height = pil_image.size
+
+#     # Define the width you want for the image in the PDF
+#     img_width = 1.0 * inch
+
+#     # Calculate the height based on the original image's aspect ratio
+#     img_height = img_width * orig_height / orig_width
+
+#     img = Image(img_path, width=img_width, height=img_height)
+    
+#     # Draw image at the top of the page
+#     x_position = 1.09 * inch  # adjust as necessary
+#     img.drawOn(canvas, x_position, doc.height + 1 * inch)  # adjust second and third parameter as necessary
 
 def export_chat_to_pdf():
     buffer = BytesIO()
