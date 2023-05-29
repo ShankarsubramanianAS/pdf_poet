@@ -78,7 +78,7 @@ def on_page(canvas, doc):
     # and a `doc` object that contains information about the document.
     
     # Add your image file
-    img_path = './header/robot_reader.jpeg'
+    img_path = './header/robot_reader.jpg'
     # Load your image file with PIL
     pil_image = PilImage.open(img_path)
 
