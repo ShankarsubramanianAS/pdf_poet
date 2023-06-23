@@ -1,5 +1,5 @@
 streamlit==1.22.0
-streamlib
+streamlit
 pycairo
 tiktoken==0.3.3
 PyPDF2==3.0.1
