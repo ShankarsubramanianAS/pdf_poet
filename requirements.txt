@@ -1,9 +1,10 @@
+--upgrade pip
 streamlit==1.22.0
 tiktoken==0.3.3
 PyPDF2==3.0.1
 openai==0.27.2
 langchain==0.0.167
-libgirepository1.0-dev gcc libcairo2-dev pkg-config python-dev gir1.2-gtk-3.0 
+#libgirepository1.0-dev gcc libcairo2-dev pkg-config python-dev gir1.2-gtk-3.0 
 faiss-cpu==1.7.4
 streamlit-chat==0.0.2.2
 reportlab==4.0.0
