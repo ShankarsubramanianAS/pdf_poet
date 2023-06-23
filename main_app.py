@@ -81,7 +81,7 @@ def on_page(canvas, doc):
     # and a `doc` object that contains information about the document.
     
     # Add your image file
-    img_path = './header/robot_reader.jpeg'
+    img_path = 'https://github.com/ShankarsubramanianAS/pdf_poet/raw/main/header/robot_reader.jpg'
     
     # Read the image using imageio
     image = imageio.imread(img_path)
